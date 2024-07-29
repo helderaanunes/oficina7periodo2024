@@ -38,22 +38,15 @@ class UsuarioDAO {
 
     public function update($usuario) {
         try {
-            $sql = "UPDATE usuario SET nome=:nome, cpf =:cpf,logradouro=:logradouro,numero=:numero,"
-                    . "bairro=:bairro, cidade=:cidade,uf =:uf,telefone=:telefone, email=:email, senha=:senha "
+            $sql = "UPDATE usuario SET nome=:nome, email=:email,"
+                    . "login=:login, senha=:senha "
                     . "where id=:id";
             //perceba que na linha abaixo vai precisar de um import
             $p_sql = BDPDO::getInstance()->prepare($sql);
             $p_sql->bindValue(":nome", $usuario->getNome());
-            $p_sql->bindValue(":cpf", $usuario->getCpf());
-            $p_sql->bindValue(":logradouro", $usuario->getLogradouro());
-            $p_sql->bindValue(":numero", $usuario->getNumero());
-            $p_sql->bindValue(":bairro", $usuario->getBairro());
-            $p_sql->bindValue(":cidade", $usuario->getCidade());
-            $p_sql->bindValue(":uf", $usuario->getUf());
-            $p_sql->bindValue(":telefone", $usuario->getTelefone());
+            $p_sql->bindValue(":login", $usuario->getLogin());
             $p_sql->bindValue(":email", $usuario->getEmail());
-            //iremos critografar a senha para md5, asism o usuário terá mais segurança, já que frequentemente usamos a mesma senha           //  para diversas aplicações.
-            $p_sql->bindValue(":senha", md5($usuario->getSenha()));
+            $p_sql->bindValue(":senha", ($usuario->getSenha()));
             $p_sql->bindValue(":id", $usuario->getId());
             return $p_sql->execute();
         } catch (Exception $e) {

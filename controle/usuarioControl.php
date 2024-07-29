@@ -11,7 +11,13 @@ $usuarioQueEuQueroSalvar->setLogin($_POST['login']);
 $usuarioQueEuQueroSalvar->setSenha($_POST['senha']);
 
 print_r($usuarioQueEuQueroSalvar);
-UsuarioDAO::getInstance()->insert($usuarioQueEuQueroSalvar);
+if ($_POST['id']==0){
+    UsuarioDAO::getInstance()->insert($usuarioQueEuQueroSalvar);
+}
+else{
+    $usuarioQueEuQueroSalvar->setId($_POST['id']);
+    UsuarioDAO::getInstance()->update($usuarioQueEuQueroSalvar);
+}
 echo " <script> 
     alert ('Usuario salvo com sucesso!');
     window.location='../UsuarioAddEdit.php';

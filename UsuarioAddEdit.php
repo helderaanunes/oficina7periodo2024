@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . 
+        '/oficina7periodo2024/modelo/dao/UsuarioDAO.php';
+$obj = NULL;
+if (isset($_GET['id'])){
+    //como está setado então é uma edição/update
+    $obj = UsuarioDAO::getInstance()->getById($_GET['id']);
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -260,17 +269,18 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="POST" action="controle/usuarioControl.php">
+                                    <input type="hidden" name="id" value="<?php echo $obj == NULL?"0":$obj->getId(); ?>" />
                                     <div>
                                         Nome:
-                                        <input type="text" name="nome" id="nome" class="form-control mb-2"/>
+                                        <input type="text" name="nome" value="<?php echo $obj == NULL?"":$obj->getNome(); ?>" id="nome" class="form-control mb-2"/>
                                     </div>
                                     <div>
                                         Login:
-                                        <input type="text" name="login" id="login" class="form-control mb-2"/>
+                                        <input type="text" name="login" id="login" value="<?php echo $obj == NULL?"":$obj->getLogin(); ?>" class="form-control mb-2"/>
                                     </div>
                                     <div>
                                         E-mail:
-                                        <input type="email" name="email" id="email" class="form-control mb-2"/>
+                                        <input type="email" name="email" id="email" value="<?php echo $obj == NULL?"":$obj->getEmail(); ?>" class="form-control mb-2"/>
                                     </div>
                                     <div>
                                         Senha:
