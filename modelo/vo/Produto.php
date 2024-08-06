@@ -7,7 +7,17 @@ class Produto {
     private $precoFornecedor;
     private $precoVenda;
     private $quantidadeEstoque;
-    function getId() {
+    private $idCategoria;
+    
+    function getIdCategoria() {
+        return $this->idCategoria;
+    }
+
+    function setIdCategoria($idCategoria) {
+        $this->idCategoria = $idCategoria;
+    }
+
+        function getId() {
         return $this->id;
     }
 

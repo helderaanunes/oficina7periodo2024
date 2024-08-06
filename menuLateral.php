@@ -43,6 +43,20 @@
             </li>
             
             <li class="nav-item">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseProduto"
+                    aria-expanded="true" aria-controls="collapseUsuario">
+                    <i class="fas fa-fw fa-oil-can"></i>
+                    <span>Produto</span>
+                </a>
+                <div id="collapseProduto" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="ProdutoAddEdit.php">Adicionar</a>
+                        <a class="collapse-item" href="ProdutoList.php">Listar</a>
+                    </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseServico"
                     aria-expanded="true" aria-controls="collapseServico">
                     <i class="fas fa-fw fa-wrench"></i>
